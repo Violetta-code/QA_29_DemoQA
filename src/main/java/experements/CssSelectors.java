@@ -12,11 +12,31 @@ public class CssSelectors {
 
 
     @Test
-    public void selectorsHomePage(){
-        driver.get("https://demoqa.com");
+    public void selectorsHomePage() {
+        driver.get("https://demoqa.com/");
         driver.manage().window().maximize();
 
-        WebElement footer=driver.findElement(By.tagName("footer"));
+        WebElement footer = driver.findElement(By.tagName("footer"));
         System.out.println(footer.getAttribute("class"));
+
+        WebElement imgTools = driver.findElement(By
+                .cssSelector("img[src='/images/Toolsqa.jpg']"));
+        System.out.println(imgTools.getTagName());
+        System.out.println(imgTools.getAttribute("src"));
+
+        WebElement elements = driver.findElement(By.cssSelector(".card-up"));
+        elements.click();
+        pause(5);
+
+        driver.quit();
+
+    }
+
+    public void pause(int time) {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
